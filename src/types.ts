@@ -3,7 +3,9 @@ export interface VocabularyItem {
     japanese: string;
     reading: string;
     chinese: string;
-    tags: string[];
+    pos: string;
+    category: string;
+    level: string;
 }
 
 export type N5Word = VocabularyItem;

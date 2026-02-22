@@ -9,33 +9,53 @@ import {
   Shuffle,
   BookOpen
 } from 'lucide-react';
-import { n5Vocabulary, n4Vocabulary } from './data/words_tagged';
-import { N5Word, N4Word } from './types';
+import { n5Vocabulary, n4Vocabulary } from './data/words_final';
+import { VocabularyItem } from './types';
 
 type Mode = 'JP_TO_CN' | 'CN_TO_JP';
-type Level = 'N5' | 'N4';
+type Level = 'N5' | 'N4' | 'ALL';
 
 export default function App() {
   const [mode, setMode] = useState<Mode>('JP_TO_CN');
   const [level, setLevel] = useState<Level>('N5');
   const [category, setCategory] = useState<string>('all');
+  const [pos, setPos] = useState<string>('all');
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
-  const [shuffledList, setShuffledList] = useState<N5Word[] | N4Word[]>([]);
+  const [shuffledList, setShuffledList] = useState<VocabularyItem[]>([]);
 
-  const currentVocab = useMemo(() => level === 'N5' ? n5Vocabulary : n4Vocabulary, [level]);
+  // Get combined or specific vocabulary based on selected level
+  const currentLevelVocab = useMemo(() => {
+    if (level === 'N5') return n5Vocabulary;
+    if (level === 'N4') return n4Vocabulary;
+    return [...n5Vocabulary, ...n4Vocabulary];
+  }, [level]);
 
-  const availableTags = useMemo(() => {
-    const tags = new Set<string>();
-    currentVocab.forEach(word => word.tags.forEach(tag => tags.add(tag)));
-    return Array.from(tags).sort();
-  }, [currentVocab]);
+  // Extract unique categories and POS for dropdowns based on current level vocab
+  const { availableCategories, availablePos } = useMemo(() => {
+    const categories = new Set<string>();
+    const poses = new Set<string>();
 
+    currentLevelVocab.forEach(word => {
+      categories.add(word.category);
+      poses.add(word.pos);
+    });
+
+    return {
+      availableCategories: Array.from(categories).sort(),
+      availablePos: Array.from(poses).sort()
+    };
+  }, [currentLevelVocab]);
+
+  // Filter vocabulary based on selected category and pos
   const filteredVocab = useMemo(() => {
-    if (category === 'all') return currentVocab;
-    return currentVocab.filter(word => word.tags.includes(category));
-  }, [currentVocab, category]);
+    return currentLevelVocab.filter(word => {
+      const matchCategory = category === 'all' || word.category === category;
+      const matchPos = pos === 'all' || word.pos === pos;
+      return matchCategory && matchPos;
+    });
+  }, [currentLevelVocab, category, pos]);
 
   useEffect(() => {
     handleShuffle();
@@ -44,7 +64,10 @@ export default function App() {
   const currentItem = shuffledList[currentIndex];
 
   const handleShuffle = () => {
-    if (filteredVocab.length === 0) return;
+    if (filteredVocab.length === 0) {
+      setShuffledList([]);
+      return;
+    }
     const newList = [...filteredVocab].sort(() => Math.random() - 0.5);
     setShuffledList(newList);
     setCurrentIndex(0);
@@ -116,41 +139,72 @@ export default function App() {
 
       <main className="max-w-2xl mx-auto px-6 py-8">
         {/* Filters */}
-        <div className="mb-8 flex flex-col sm:flex-row gap-4 bg-white p-4 rounded-2xl border border-black/5 shadow-sm">
-          <div className="flex-1">
+        <div className="mb-8 flex flex-col gap-4 bg-white p-5 rounded-2xl border border-black/5 shadow-sm">
+          {/* Level Selection */}
+          <div>
             <label className="block text-xs font-semibold text-black/40 mb-2 uppercase tracking-wider">級別 Level</label>
             <div className="flex gap-2">
               <button
-                onClick={() => { setLevel('N5'); setCategory('all'); }}
+                onClick={() => { setLevel('N5'); setCategory('all'); setPos('all'); }}
                 className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${level === 'N5' ? 'bg-orange-500 text-white' : 'bg-black/5 text-black/60 hover:bg-black/10'}`}
               >
                 N5 基礎
               </button>
               <button
-                onClick={() => { setLevel('N4'); setCategory('all'); }}
+                onClick={() => { setLevel('N4'); setCategory('all'); setPos('all'); }}
                 className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${level === 'N4' ? 'bg-orange-500 text-white' : 'bg-black/5 text-black/60 hover:bg-black/10'}`}
               >
                 N4 進階
               </button>
+              <button
+                onClick={() => { setLevel('ALL'); setCategory('all'); setPos('all'); }}
+                className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${level === 'ALL' ? 'bg-orange-500 text-white' : 'bg-black/5 text-black/60 hover:bg-black/10'}`}
+              >
+                全部級別
+              </button>
             </div>
           </div>
 
-          <div className="flex-1">
-            <label className="block text-xs font-semibold text-black/40 mb-2 uppercase tracking-wider">分類 Category</label>
-            <div className="relative">
-              <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="w-full appearance-none bg-black/5 border-none rounded-lg py-2 px-4 text-sm font-medium text-black/70 outline-none focus:ring-2 focus:ring-orange-500/20 cursor-pointer"
-              >
-                <option value="all">所有的單字 ({currentVocab.length})</option>
-                {availableTags.map(tag => {
-                  const count = currentVocab.filter(w => w.tags.includes(tag)).length;
-                  return <option key={tag} value={tag}>{tag} ({count})</option>
-                })}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-black/40">
-                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+          <div className="flex flex-col sm:flex-row gap-4">
+            {/* POS Selection */}
+            <div className="flex-1">
+              <label className="block text-xs font-semibold text-black/40 mb-2 uppercase tracking-wider">詞性 POS</label>
+              <div className="relative">
+                <select
+                  value={pos}
+                  onChange={(e) => setPos(e.target.value)}
+                  className="w-full appearance-none bg-black/5 border-none rounded-lg py-2 pl-4 pr-10 text-sm font-medium text-black/70 outline-none focus:ring-2 focus:ring-orange-500/20 cursor-pointer"
+                >
+                  <option value="all">所有的詞性</option>
+                  {availablePos.map(p => {
+                    const count = currentLevelVocab.filter(w => w.pos === p && (category === 'all' || w.category === category)).length;
+                    return <option key={p} value={p}>{p} ({count})</option>
+                  })}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-black/40">
+                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Category Selection */}
+            <div className="flex-1">
+              <label className="block text-xs font-semibold text-black/40 mb-2 uppercase tracking-wider">主題 Category</label>
+              <div className="relative">
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="w-full appearance-none bg-black/5 border-none rounded-lg py-2 pl-4 pr-10 text-sm font-medium text-black/70 outline-none focus:ring-2 focus:ring-orange-500/20 cursor-pointer"
+                >
+                  <option value="all">所有的主題</option>
+                  {availableCategories.map(cat => {
+                    const count = currentLevelVocab.filter(w => w.category === cat && (pos === 'all' || w.pos === pos)).length;
+                    return <option key={cat} value={cat}>{cat} ({count})</option>
+                  })}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-black/40">
+                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
               </div>
             </div>
           </div>
@@ -186,7 +240,7 @@ export default function App() {
           <div className="relative perspective-1000 h-80 w-full mb-12">
             <AnimatePresence mode="wait">
               <motion.div
-                key={currentIndex + mode + level + category}
+                key={currentIndex + mode + level + category + pos}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -197,44 +251,50 @@ export default function App() {
                   className="w-full h-full bg-white rounded-3xl border border-black/5 shadow-xl shadow-black/5 flex flex-col items-center justify-center p-8 text-center cursor-pointer group relative overflow-hidden"
                   onClick={() => setShowAnswer(!showAnswer)}
                 >
-                  <div className="absolute top-4 left-4 flex gap-1 flex-wrap justify-start max-w-[80%]">
-                    {currentItem.tags.map(tag => (
-                      <span key={tag} className="bg-orange-50 text-orange-600/80 text-[10px] font-bold px-2 py-1 rounded-md tracking-wider">
-                        {tag}
-                      </span>
-                    ))}
+                  <div className="absolute top-4 left-4 flex gap-2 flex-wrap justify-start max-w-[80%]">
+                    <span className="bg-orange-50 text-orange-600/80 text-[10px] font-bold px-2 py-1 rounded-md tracking-wider">
+                      {currentItem.level}
+                    </span>
+                    <span className="bg-stone-100 text-stone-600/80 text-[10px] font-bold px-2 py-1 rounded-md tracking-wider">
+                      {currentItem.pos}
+                    </span>
+                    <span className="bg-stone-100 text-stone-600/80 text-[10px] font-bold px-2 py-1 rounded-md tracking-wider">
+                      {currentItem.category}
+                    </span>
                   </div>
 
                   {/* Decorative background element */}
                   <div className="absolute -top-24 -right-24 w-48 h-48 bg-orange-50 rounded-full opacity-50 group-hover:scale-110 transition-transform duration-500" />
 
-                  <div className="relative z-10">
+                  <div className="relative z-10 w-full px-4">
                     {mode === 'JP_TO_CN' ? (
                       <>
-                        <h2 className="text-5xl font-bold mb-4 tracking-tight">
+                        <h2 className="text-5xl sm:text-6xl font-bold mb-4 tracking-tight break-words">
                           {currentItem.japanese}
                         </h2>
-                        <p className="text-lg text-black/30 font-medium mb-8">
+                        <p className="text-lg text-black/30 font-medium mb-8 min-h-[1.75rem]">
                           {currentItem.reading !== currentItem.japanese ? currentItem.reading : ''}
                         </p>
                       </>
                     ) : (
-                      <h2 className="text-4xl font-bold mb-12 tracking-tight">
+                      <h2 className="text-3xl sm:text-4xl font-bold mb-12 tracking-tight break-words">
                         {currentItem.chinese}
                       </h2>
                     )}
 
-                    <div className="h-20 flex items-center justify-center">
+                    <div className="h-24 flex items-center justify-center">
                       {showAnswer ? (
                         <motion.div
                           initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
-                          className="text-2xl font-medium text-orange-600"
+                          className="text-2xl font-medium text-orange-600 w-full"
                         >
-                          {mode === 'JP_TO_CN' ? currentItem.chinese : (
+                          {mode === 'JP_TO_CN' ? (
+                            <div className="break-words">{currentItem.chinese}</div>
+                          ) : (
                             <div className="flex flex-col items-center">
-                              <span className="text-3xl font-bold">{currentItem.japanese}</span>
-                              <span className="text-sm text-black/40 mt-1">{currentItem.reading}</span>
+                              <span className="text-4xl font-bold break-words">{currentItem.japanese}</span>
+                              <span className="text-base text-black/40 mt-2">{currentItem.reading}</span>
                             </div>
                           )}
                         </motion.div>
@@ -261,7 +321,7 @@ export default function App() {
           <button
             onClick={handlePrev}
             disabled={currentIndex === 0 || filteredVocab.length === 0}
-            className="w-14 h-14 rounded-full border border-black/5 bg-white flex items-center justify-center text-black/60 hover:bg-black/5 disabled:opacity-30 disabled:hover:bg-white transition-all shadow-sm"
+            className="w-14 h-14 rounded-full border border-black/5 bg-white flex items-center justify-center text-black/60 hover:bg-black/5 disabled:opacity-30 disabled:hover:bg-white transition-all shadow-sm flex-shrink-0"
           >
             <ChevronLeft size={24} />
           </button>
@@ -280,7 +340,7 @@ export default function App() {
           <button
             onClick={handleNext}
             disabled={currentIndex === shuffledList.length - 1 || filteredVocab.length === 0}
-            className="w-14 h-14 rounded-full border border-black/5 bg-white flex items-center justify-center text-black/60 hover:bg-black/5 disabled:opacity-30 disabled:hover:bg-white transition-all shadow-sm"
+            className="w-14 h-14 rounded-full border border-black/5 bg-white flex items-center justify-center text-black/60 hover:bg-black/5 disabled:opacity-30 disabled:hover:bg-white transition-all shadow-sm flex-shrink-0"
           >
             <ChevronRight size={24} />
           </button>
