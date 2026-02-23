@@ -13,7 +13,7 @@ import {
 import { n5Vocabulary, n4Vocabulary } from './data/words';
 import { VocabularyItem } from './types';
 
-type Mode = 'JP_TO_CN' | 'CN_TO_JP';
+type Mode = 'JP_TO_CN' | 'CN_TO_JP' | 'KANA_TO_CN' | 'CN_TO_KANA';
 type Level = 'N5' | 'N4' | 'ALL';
 
 export default function App() {
@@ -94,7 +94,12 @@ export default function App() {
   };
 
   const toggleMode = () => {
-    setMode(prev => prev === 'JP_TO_CN' ? 'CN_TO_JP' : 'JP_TO_CN');
+    setMode(prev => {
+      if (prev === 'JP_TO_CN') return 'CN_TO_JP';
+      if (prev === 'CN_TO_JP') return 'KANA_TO_CN';
+      if (prev === 'KANA_TO_CN') return 'CN_TO_KANA';
+      return 'JP_TO_CN';
+    });
     setShowAnswer(false);
   };
 
@@ -119,8 +124,8 @@ export default function App() {
       return;
     }
 
-    // Start the 5s timer if reading is hidden and we are on JP question side
-    if (!showReading && mode === 'JP_TO_CN') {
+    // Start the 5s timer if reading is hidden and we are on question side
+    if (!showReading && (mode === 'JP_TO_CN' || mode === 'KANA_TO_CN')) {
       const timer = setTimeout(() => {
         setReadingRevealed(true);
       }, 5000);
@@ -162,7 +167,7 @@ export default function App() {
           <button
             onClick={toggleReading}
             className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors shadow-sm cursor-pointer ${showReading ? 'bg-orange-100 text-orange-600 border border-orange-200' : 'bg-white text-black/40 border border-black/10 hover:bg-black/5'}`}
-            title={showReading ? '隱藏拼音' : '顯示拼音'}
+            title={showReading ? (mode.includes('KANA') ? '隱藏漢字' : '隱藏拼音') : (mode.includes('KANA') ? '顯示漢字' : '顯示拼音')}
           >
             {showReading ? <Eye size={18} /> : <EyeOff size={18} />}
           </button>
@@ -171,7 +176,10 @@ export default function App() {
             className="flex items-center gap-2 px-4 py-2 bg-white border border-black/5 rounded-full text-sm font-medium hover:bg-black/5 transition-colors shadow-sm"
           >
             <Languages size={16} className="text-orange-500" />
-            {mode === 'JP_TO_CN' ? '日 ➔ 中' : '中 ➔ 日'}
+            {mode === 'JP_TO_CN' && '日 ➔ 中'}
+            {mode === 'CN_TO_JP' && '中 ➔ 日'}
+            {mode === 'KANA_TO_CN' && '仮 ➔ 中'}
+            {mode === 'CN_TO_KANA' && '中 ➔ 仮'}
           </button>
         </div>
       </header>
@@ -306,13 +314,13 @@ export default function App() {
                   <div className="absolute -top-24 -right-24 w-48 h-48 bg-orange-50 rounded-full opacity-50 group-hover:scale-110 transition-transform duration-500" />
 
                   <div className="relative z-10 w-full px-2 sm:px-4 mt-6 sm:mt-8">
-                    {mode === 'JP_TO_CN' ? (
+                    {mode === 'JP_TO_CN' || mode === 'KANA_TO_CN' ? (
                       <>
                         <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 tracking-tight break-words">
-                          {currentItem.japanese}
+                          {mode === 'JP_TO_CN' ? currentItem.japanese : currentItem.reading}
                         </h2>
                         <p className={`text-base sm:text-lg text-black/50 font-medium mb-6 sm:mb-8 min-h-[1.75rem] transition-all duration-300 ${!showReading && !readingRevealed && currentItem.reading !== currentItem.japanese ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>
-                          {currentItem.reading !== currentItem.japanese ? currentItem.reading : ''}
+                          {currentItem.reading !== currentItem.japanese ? (mode === 'JP_TO_CN' ? currentItem.reading : currentItem.japanese) : ''}
                         </p>
                       </>
                     ) : (
@@ -328,12 +336,16 @@ export default function App() {
                           animate={{ opacity: 1, scale: 1 }}
                           className="text-xl sm:text-2xl font-medium text-orange-600 w-full"
                         >
-                          {mode === 'JP_TO_CN' ? (
+                          {mode === 'JP_TO_CN' || mode === 'KANA_TO_CN' ? (
                             <div className="break-words">{currentItem.chinese}</div>
                           ) : (
                             <div className="flex flex-col items-center">
-                              <span className="text-3xl sm:text-4xl font-bold break-words">{currentItem.japanese}</span>
-                              <span className={`text-sm sm:text-base text-black/50 mt-2 transition-all duration-300 ${!showReading && !readingRevealed ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>{currentItem.reading}</span>
+                              <span className="text-3xl sm:text-4xl font-bold break-words">
+                                {mode === 'CN_TO_JP' ? currentItem.japanese : currentItem.reading}
+                              </span>
+                              <span className={`text-sm sm:text-base text-black/50 mt-2 transition-all duration-300 ${!showReading && !readingRevealed && currentItem.reading !== currentItem.japanese ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>
+                                {currentItem.reading !== currentItem.japanese ? (mode === 'CN_TO_JP' ? currentItem.reading : currentItem.japanese) : ''}
+                              </span>
                             </div>
                           )}
                         </motion.div>
