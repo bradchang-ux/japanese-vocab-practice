@@ -7,7 +7,8 @@ import {
   Languages,
   Eye,
   Shuffle,
-  BookOpen
+  BookOpen,
+  EyeOff
 } from 'lucide-react';
 import { n5Vocabulary, n4Vocabulary } from './data/words';
 import { VocabularyItem } from './types';
@@ -20,10 +21,13 @@ export default function App() {
   const [level, setLevel] = useState<Level>('N5');
   const [category, setCategory] = useState<string>('all');
   const [pos, setPos] = useState<string>('all');
+  const [showReading, setShowReading] = useState(true);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [shuffledList, setShuffledList] = useState<VocabularyItem[]>([]);
+
+  // ... (keep useMemo and other logic same as original)
 
   // Get combined or specific vocabulary based on selected level
   const currentLevelVocab = useMemo(() => {
@@ -93,6 +97,10 @@ export default function App() {
     setShowAnswer(false);
   };
 
+  const toggleReading = () => {
+    setShowReading(prev => !prev);
+  };
+
   const reset = () => {
     setCurrentIndex(0);
     setShowAnswer(false);
@@ -128,13 +136,22 @@ export default function App() {
           </div>
         </div>
 
-        <button
-          onClick={toggleMode}
-          className="flex items-center gap-2 px-4 py-2 bg-white border border-black/5 rounded-full text-sm font-medium hover:bg-black/5 transition-colors shadow-sm"
-        >
-          <Languages size={16} className="text-orange-500" />
-          {mode === 'JP_TO_CN' ? '日 ➔ 中' : '中 ➔ 日'}
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggleReading}
+            className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors shadow-sm cursor-pointer ${showReading ? 'bg-orange-100 text-orange-600 border border-orange-200' : 'bg-white text-black/40 border border-black/10 hover:bg-black/5'}`}
+            title={showReading ? '隱藏拼音' : '顯示拼音'}
+          >
+            {showReading ? <Eye size={18} /> : <EyeOff size={18} />}
+          </button>
+          <button
+            onClick={toggleMode}
+            className="flex items-center gap-2 px-4 py-2 bg-white border border-black/5 rounded-full text-sm font-medium hover:bg-black/5 transition-colors shadow-sm"
+          >
+            <Languages size={16} className="text-orange-500" />
+            {mode === 'JP_TO_CN' ? '日 ➔ 中' : '中 ➔ 日'}
+          </button>
+        </div>
       </header>
 
       <main className="max-w-2xl mx-auto px-6 py-8">
@@ -272,7 +289,7 @@ export default function App() {
                         <h2 className="text-5xl sm:text-6xl font-bold mb-4 tracking-tight break-words">
                           {currentItem.japanese}
                         </h2>
-                        <p className="text-lg text-black/30 font-medium mb-8 min-h-[1.75rem]">
+                        <p className={`text-lg text-black/50 font-medium mb-8 min-h-[1.75rem] transition-all duration-300 ${!showReading && currentItem.reading !== currentItem.japanese ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>
                           {currentItem.reading !== currentItem.japanese ? currentItem.reading : ''}
                         </p>
                       </>
@@ -294,7 +311,7 @@ export default function App() {
                           ) : (
                             <div className="flex flex-col items-center">
                               <span className="text-4xl font-bold break-words">{currentItem.japanese}</span>
-                              <span className="text-base text-black/40 mt-2">{currentItem.reading}</span>
+                              <span className={`text-base text-black/50 mt-2 transition-all duration-300 ${!showReading ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>{currentItem.reading}</span>
                             </div>
                           )}
                         </motion.div>
