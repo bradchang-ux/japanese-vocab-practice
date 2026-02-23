@@ -305,7 +305,7 @@ export default function App() {
                   {/* Decorative background element */}
                   <div className="absolute -top-24 -right-24 w-48 h-48 bg-orange-50 rounded-full opacity-50 group-hover:scale-110 transition-transform duration-500" />
 
-                  <div className="relative z-10 w-full px-2 sm:px-4">
+                  <div className="relative z-10 w-full px-2 sm:px-4 mt-6 sm:mt-8">
                     {mode === 'JP_TO_CN' ? (
                       <>
                         <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 tracking-tight break-words">
