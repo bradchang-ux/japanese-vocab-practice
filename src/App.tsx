@@ -22,6 +22,7 @@ export default function App() {
   const [category, setCategory] = useState<string>('all');
   const [pos, setPos] = useState<string>('all');
   const [showReading, setShowReading] = useState(true);
+  const [readingRevealed, setReadingRevealed] = useState(false);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -105,6 +106,20 @@ export default function App() {
     setCurrentIndex(0);
     setShowAnswer(false);
   };
+
+  useEffect(() => {
+    setReadingRevealed(false);
+
+    // Determine if we are currently looking at a side that has the reading
+    const isShowingReadingSide = (mode === 'JP_TO_CN' && !showAnswer) || (mode === 'CN_TO_JP' && showAnswer);
+
+    if (!showReading && isShowingReadingSide) {
+      const timer = setTimeout(() => {
+        setReadingRevealed(true);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [currentIndex, shuffledList, showReading, showAnswer, mode]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -289,7 +304,7 @@ export default function App() {
                         <h2 className="text-5xl sm:text-6xl font-bold mb-4 tracking-tight break-words">
                           {currentItem.japanese}
                         </h2>
-                        <p className={`text-lg text-black/50 font-medium mb-8 min-h-[1.75rem] transition-all duration-300 ${!showReading && currentItem.reading !== currentItem.japanese ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>
+                        <p className={`text-lg text-black/50 font-medium mb-8 min-h-[1.75rem] transition-all duration-300 ${!showReading && !readingRevealed && currentItem.reading !== currentItem.japanese ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>
                           {currentItem.reading !== currentItem.japanese ? currentItem.reading : ''}
                         </p>
                       </>
@@ -311,7 +326,7 @@ export default function App() {
                           ) : (
                             <div className="flex flex-col items-center">
                               <span className="text-4xl font-bold break-words">{currentItem.japanese}</span>
-                              <span className={`text-base text-black/50 mt-2 transition-all duration-300 ${!showReading ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>{currentItem.reading}</span>
+                              <span className={`text-base text-black/50 mt-2 transition-all duration-300 ${!showReading && !readingRevealed ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>{currentItem.reading}</span>
                             </div>
                           )}
                         </motion.div>
