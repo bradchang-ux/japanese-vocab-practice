@@ -9,7 +9,7 @@ import {
   Shuffle,
   BookOpen
 } from 'lucide-react';
-import { n5Vocabulary, n4Vocabulary } from './data/words_final';
+import { n5Vocabulary, n4Vocabulary } from './data/words';
 import { VocabularyItem } from './types';
 
 type Mode = 'JP_TO_CN' | 'CN_TO_JP';
@@ -330,8 +330,8 @@ export default function App() {
             onClick={() => setShowAnswer(!showAnswer)}
             disabled={filteredVocab.length === 0}
             className={`px-10 py-4 rounded-full font-semibold transition-all shadow-lg disabled:opacity-50 disabled:shadow-none ${showAnswer
-                ? 'bg-black text-white shadow-black/20'
-                : 'bg-orange-500 text-white shadow-orange-200'
+              ? 'bg-black text-white shadow-black/20'
+              : 'bg-orange-500 text-white shadow-orange-200'
               }`}
           >
             {showAnswer ? '隱藏答案' : '查看答案'}
