@@ -108,18 +108,25 @@ export default function App() {
   };
 
   useEffect(() => {
+    // Reset reading revealed state only when changing cards or mode
     setReadingRevealed(false);
+  }, [currentIndex, shuffledList, mode]);
 
-    // Determine if we are currently looking at a side that has the reading
-    const isShowingReadingSide = (mode === 'JP_TO_CN' && !showAnswer) || (mode === 'CN_TO_JP' && showAnswer);
+  useEffect(() => {
+    if (showAnswer) {
+      // Once answer is viewed, immediately reveal the reading
+      setReadingRevealed(true);
+      return;
+    }
 
-    if (!showReading && isShowingReadingSide) {
+    // Start the 5s timer if reading is hidden and we are on JP question side
+    if (!showReading && mode === 'JP_TO_CN') {
       const timer = setTimeout(() => {
         setReadingRevealed(true);
       }, 5000);
       return () => clearTimeout(timer);
     }
-  }, [currentIndex, shuffledList, showReading, showAnswer, mode]);
+  }, [currentIndex, showReading, showAnswer, mode]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
