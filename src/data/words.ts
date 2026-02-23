@@ -436,7 +436,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 49,
     "japanese": "サラリーマン",
-    "reading": "salaryman",
+    "reading": "サラリーマン",
     "chinese": "上班族",
     "pos": "名詞",
     "category": "職稱、身分",
@@ -814,7 +814,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 91,
     "japanese": "アパート",
-    "reading": "apartment",
+    "reading": "アパート",
     "chinese": "公寓",
     "pos": "名詞",
     "category": "場所、地點",
@@ -823,7 +823,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 92,
     "japanese": "デパート",
-    "reading": "department",
+    "reading": "デパート",
     "chinese": "百貨公司",
     "pos": "名詞",
     "category": "場所、地點",
@@ -832,7 +832,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 93,
     "japanese": "エレベーター",
-    "reading": "elevator",
+    "reading": "エレベーター",
     "chinese": "電梯",
     "pos": "名詞",
     "category": "場所、地點",
@@ -841,7 +841,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 94,
     "japanese": "レストラン",
-    "reading": "restaurant",
+    "reading": "レストラン",
     "chinese": "餐廳（西餐廳）",
     "pos": "名詞",
     "category": "場所、地點",
@@ -850,7 +850,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 95,
     "japanese": "カフェ",
-    "reading": "café〔法〕",
+    "reading": "カフェ",
     "chinese": "咖啡廳",
     "pos": "名詞",
     "category": "場所、地點",
@@ -859,7 +859,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 96,
     "japanese": "プール",
-    "reading": "pool",
+    "reading": "プール",
     "chinese": "游泳池",
     "pos": "名詞",
     "category": "場所、地點",
@@ -868,7 +868,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 97,
     "japanese": "ホテル",
-    "reading": "hotel",
+    "reading": "ホテル",
     "chinese": "旅館、飯店",
     "pos": "名詞",
     "category": "場所、地點",
@@ -877,7 +877,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 98,
     "japanese": "トイレ",
-    "reading": "toilet",
+    "reading": "トイレ",
     "chinese": "廁所",
     "pos": "名詞",
     "category": "場所、地點",
@@ -1174,7 +1174,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 131,
     "japanese": "カレー",
-    "reading": "curry",
+    "reading": "カレー",
     "chinese": "咖哩",
     "pos": "名詞",
     "category": "飲食",
@@ -1183,7 +1183,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 132,
     "japanese": "パン",
-    "reading": "pão〔葡〕",
+    "reading": "パン",
     "chinese": "麵包",
     "pos": "名詞",
     "category": "飲食",
@@ -1282,7 +1282,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 143,
     "japanese": "バター",
-    "reading": "butter",
+    "reading": "バター",
     "chinese": "奶油",
     "pos": "名詞",
     "category": "飲食",
@@ -1354,7 +1354,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 151,
     "japanese": "ビール",
-    "reading": "bier〔荷〕",
+    "reading": "ビール",
     "chinese": "啤酒",
     "pos": "名詞",
     "category": "飲食",
@@ -1363,7 +1363,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 152,
     "japanese": "コーヒー",
-    "reading": "coffee",
+    "reading": "コーヒー",
     "chinese": "咖啡",
     "pos": "名詞",
     "category": "飲食",
@@ -1372,7 +1372,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 153,
     "japanese": "ジュース",
-    "reading": "juice",
+    "reading": "ジュース",
     "chinese": "果汁",
     "pos": "名詞",
     "category": "飲食",
@@ -1606,7 +1606,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 179,
     "japanese": "バス",
-    "reading": "bus",
+    "reading": "バス",
     "chinese": "公車",
     "pos": "名詞",
     "category": "交通工具",
@@ -1615,7 +1615,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 180,
     "japanese": "バイク",
-    "reading": "bike",
+    "reading": "バイク",
     "chinese": "機車",
     "pos": "名詞",
     "category": "交通工具",
@@ -1624,7 +1624,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 181,
     "japanese": "タクシー",
-    "reading": "taxi",
+    "reading": "タクシー",
     "chinese": "計程車",
     "pos": "名詞",
     "category": "交通工具",
@@ -1687,7 +1687,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 188,
     "japanese": "コート",
-    "reading": "coat",
+    "reading": "コート",
     "chinese": "大衣、外衣",
     "pos": "名詞",
     "category": "服裝",
@@ -1696,7 +1696,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 189,
     "japanese": "シャツ",
-    "reading": "shirt",
+    "reading": "シャツ",
     "chinese": "襯衫",
     "pos": "名詞",
     "category": "服裝",
@@ -1705,7 +1705,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 190,
     "japanese": "Tシャツ",
-    "reading": "T shirt",
+    "reading": "Tシャツ",
     "chinese": "T裇",
     "pos": "名詞",
     "category": "服裝",
@@ -1714,7 +1714,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 191,
     "japanese": "ワイシャツ",
-    "reading": "white shirt",
+    "reading": "ワイシャツ",
     "chinese": "白襯衫",
     "pos": "名詞",
     "category": "服裝",
@@ -1723,7 +1723,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 192,
     "japanese": "セーター",
-    "reading": "sweater",
+    "reading": "セーター",
     "chinese": "毛衣",
     "pos": "名詞",
     "category": "服裝",
@@ -1732,7 +1732,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 193,
     "japanese": "ポケット",
-    "reading": "pocket",
+    "reading": "ポケット",
     "chinese": "口袋",
     "pos": "名詞",
     "category": "服裝",
@@ -1741,7 +1741,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 194,
     "japanese": "ボタン",
-    "reading": "botão〔葡〕",
+    "reading": "ボタン",
     "chinese": "釦子、鈕扣",
     "pos": "名詞",
     "category": "服裝",
@@ -1750,7 +1750,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 195,
     "japanese": "ズボン",
-    "reading": "jupon〔法〕",
+    "reading": "ズボン",
     "chinese": "長褲、西裝褲",
     "pos": "名詞",
     "category": "服裝",
@@ -1768,7 +1768,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 197,
     "japanese": "スカート",
-    "reading": "skirt",
+    "reading": "スカート",
     "chinese": "裙子",
     "pos": "名詞",
     "category": "服裝",
@@ -1795,7 +1795,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 200,
     "japanese": "スリッパ",
-    "reading": "slipper",
+    "reading": "スリッパ",
     "chinese": "室內拖鞋、居家拖鞋",
     "pos": "名詞",
     "category": "服裝",
@@ -1876,7 +1876,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 209,
     "japanese": "テレビ",
-    "reading": "television",
+    "reading": "テレビ",
     "chinese": "電視",
     "pos": "名詞",
     "category": "電器",
@@ -1885,7 +1885,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 210,
     "japanese": "ビデオ",
-    "reading": "video",
+    "reading": "ビデオ",
     "chinese": "錄影帶／影片",
     "pos": "名詞",
     "category": "電器",
@@ -1894,7 +1894,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 211,
     "japanese": "ラジオ",
-    "reading": "radio",
+    "reading": "ラジオ",
     "chinese": "收音機",
     "pos": "名詞",
     "category": "電器",
@@ -1903,7 +1903,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 212,
     "japanese": "カメラ",
-    "reading": "camera",
+    "reading": "カメラ",
     "chinese": "相機",
     "pos": "名詞",
     "category": "電器",
@@ -1912,7 +1912,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 213,
     "japanese": "パソコン",
-    "reading": "personal computer",
+    "reading": "パソコン",
     "chinese": "電腦",
     "pos": "名詞",
     "category": "電器",
@@ -1921,7 +1921,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 214,
     "japanese": "エアコン",
-    "reading": "air conditioner",
+    "reading": "エアコン",
     "chinese": "冷氣／空調",
     "pos": "名詞",
     "category": "電器",
@@ -2083,7 +2083,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 232,
     "japanese": "ステープラー",
-    "reading": "stapler",
+    "reading": "ステープラー",
     "chinese": "釘書機",
     "pos": "名詞",
     "category": "文具",
@@ -2092,7 +2092,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 233,
     "japanese": "ペン",
-    "reading": "pen",
+    "reading": "ペン",
     "chinese": "筆",
     "pos": "名詞",
     "category": "文具",
@@ -2101,7 +2101,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 234,
     "japanese": "ノート",
-    "reading": "note",
+    "reading": "ノート",
     "chinese": "筆記本",
     "pos": "名詞",
     "category": "文具",
@@ -2110,7 +2110,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 235,
     "japanese": "ルーズリーフ",
-    "reading": "loose-leaf",
+    "reading": "ルーズリーフ",
     "chinese": "活頁紙",
     "pos": "名詞",
     "category": "文具",
@@ -2119,7 +2119,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 236,
     "japanese": "ポスト",
-    "reading": "post",
+    "reading": "ポスト",
     "chinese": "郵筒",
     "pos": "名詞",
     "category": "文具",
@@ -2128,7 +2128,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 237,
     "japanese": "ページ",
-    "reading": "page",
+    "reading": "ページ",
     "chinese": "頁",
     "pos": "名詞",
     "category": "文具",
@@ -2137,7 +2137,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 238,
     "japanese": "ボールペン",
-    "reading": "ballpoint pen",
+    "reading": "ボールペン",
     "chinese": "原子筆",
     "pos": "名詞",
     "category": "文具",
@@ -2146,7 +2146,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 239,
     "japanese": "シャープペンシル",
-    "reading": "sharp pencil〔和〕",
+    "reading": "シャープペンシル",
     "chinese": "自動鉛筆",
     "pos": "名詞",
     "category": "文具",
@@ -2254,7 +2254,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 251,
     "japanese": "レジャー",
-    "reading": "leisure",
+    "reading": "レジャー",
     "chinese": "休閒",
     "pos": "名詞",
     "category": "休閒",
@@ -2263,7 +2263,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 252,
     "japanese": "ギター",
-    "reading": "guitar",
+    "reading": "ギター",
     "chinese": "吉他",
     "pos": "名詞",
     "category": "休閒",
@@ -2272,7 +2272,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 253,
     "japanese": "テニス",
-    "reading": "tennis",
+    "reading": "テニス",
     "chinese": "網球",
     "pos": "名詞",
     "category": "休閒",
@@ -2281,7 +2281,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 254,
     "japanese": "サッカー",
-    "reading": "soccer",
+    "reading": "サッカー",
     "chinese": "足球",
     "pos": "名詞",
     "category": "休閒",
@@ -2290,7 +2290,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 255,
     "japanese": "スポーツ",
-    "reading": "sport",
+    "reading": "スポーツ",
     "chinese": "運動",
     "pos": "名詞",
     "category": "休閒",
@@ -2299,7 +2299,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 256,
     "japanese": "シャワー",
-    "reading": "shower",
+    "reading": "シャワー",
     "chinese": "淋浴",
     "pos": "名詞",
     "category": "休閒",
@@ -2308,7 +2308,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 257,
     "japanese": "ニュース",
-    "reading": "news",
+    "reading": "ニュース",
     "chinese": "新聞",
     "pos": "名詞",
     "category": "休閒",
@@ -2317,7 +2317,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 258,
     "japanese": "パーティー",
-    "reading": "party",
+    "reading": "パーティー",
     "chinese": "派對",
     "pos": "名詞",
     "category": "休閒",
@@ -2326,7 +2326,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 259,
     "japanese": "バドミントン",
-    "reading": "badminton",
+    "reading": "バドミントン",
     "chinese": "羽球",
     "pos": "名詞",
     "category": "休閒",
@@ -2902,7 +2902,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 323,
     "japanese": "ペット",
-    "reading": "pet",
+    "reading": "ペット",
     "chinese": "寵物",
     "pos": "名詞",
     "category": "綜合",
@@ -3001,7 +3001,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 334,
     "japanese": "テーブル",
-    "reading": "table",
+    "reading": "テーブル",
     "chinese": "桌子、圓桌、方桌",
     "pos": "名詞",
     "category": "綜合",
@@ -3019,7 +3019,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 336,
     "japanese": "ベッド",
-    "reading": "bed",
+    "reading": "ベッド",
     "chinese": "床",
     "pos": "名詞",
     "category": "綜合",
@@ -3055,7 +3055,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 340,
     "japanese": "ドア",
-    "reading": "door",
+    "reading": "ドア",
     "chinese": "門",
     "pos": "名詞",
     "category": "綜合",
@@ -3073,7 +3073,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 342,
     "japanese": "スプーン",
-    "reading": "spoon",
+    "reading": "スプーン",
     "chinese": "湯匙",
     "pos": "名詞",
     "category": "綜合",
@@ -3082,7 +3082,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 343,
     "japanese": "フォーク",
-    "reading": "fork",
+    "reading": "フォーク",
     "chinese": "叉子",
     "pos": "名詞",
     "category": "綜合",
@@ -3091,7 +3091,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 344,
     "japanese": "ナイフ",
-    "reading": "knife",
+    "reading": "ナイフ",
     "chinese": "小刀子",
     "pos": "名詞",
     "category": "綜合",
@@ -3118,7 +3118,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 347,
     "japanese": "コップ",
-    "reading": "kop〔荷〕",
+    "reading": "コップ",
     "chinese": "玻璃杯",
     "pos": "名詞",
     "category": "綜合",
@@ -3127,7 +3127,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 348,
     "japanese": "カップ",
-    "reading": "cup",
+    "reading": "カップ",
     "chinese": "杯子／獎盃",
     "pos": "名詞",
     "category": "綜合",
@@ -3154,7 +3154,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 351,
     "japanese": "カレンダー",
-    "reading": "calendar",
+    "reading": "カレンダー",
     "chinese": "日曆",
     "pos": "名詞",
     "category": "綜合",
@@ -3235,7 +3235,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 360,
     "japanese": "ハンカチ",
-    "reading": "handkerchief",
+    "reading": "ハンカチ",
     "chinese": "手帕",
     "pos": "名詞",
     "category": "綜合",
@@ -3244,7 +3244,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 361,
     "japanese": "ネクタイ",
-    "reading": "necktie",
+    "reading": "ネクタイ",
     "chinese": "領帶",
     "pos": "名詞",
     "category": "綜合",
@@ -3280,7 +3280,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 365,
     "japanese": "マッチ",
-    "reading": "match",
+    "reading": "マッチ",
     "chinese": "火柴",
     "pos": "名詞",
     "category": "綜合",
@@ -3307,7 +3307,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 368,
     "japanese": "テスト",
-    "reading": "test",
+    "reading": "テスト",
     "chinese": "測驗",
     "pos": "名詞",
     "category": "綜合",
@@ -3424,7 +3424,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 381,
     "japanese": "クラス",
-    "reading": "class",
+    "reading": "クラス",
     "chinese": "班級",
     "pos": "名詞",
     "category": "綜合",
@@ -3595,7 +3595,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 400,
     "japanese": "グラム",
-    "reading": "gramme〔法〕",
+    "reading": "グラム",
     "chinese": "公克",
     "pos": "名詞",
     "category": "綜合",
@@ -3604,7 +3604,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 401,
     "japanese": "キログラム",
-    "reading": "kilogramme〔法〕",
+    "reading": "キログラム",
     "chinese": "公斤",
     "pos": "名詞",
     "category": "綜合",
@@ -3613,7 +3613,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 402,
     "japanese": "メートル",
-    "reading": "mètre〔法〕",
+    "reading": "メートル",
     "chinese": "公尺",
     "pos": "名詞",
     "category": "綜合",
@@ -3622,7 +3622,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 403,
     "japanese": "キロメートル",
-    "reading": "kilomètre〔法〕",
+    "reading": "キロメートル",
     "chinese": "公里",
     "pos": "名詞",
     "category": "綜合",
@@ -4873,7 +4873,7 @@ export const n5Vocabulary: VocabularyItem[] = [
   {
     "id": 542,
     "japanese": "コピー",
-    "reading": "copy",
+    "reading": "コピー",
     "chinese": "複製／影印",
     "pos": "動詞",
     "category": "他動詞單字列表",
