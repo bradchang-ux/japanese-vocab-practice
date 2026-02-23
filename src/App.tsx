@@ -287,7 +287,7 @@ export default function App() {
                 className="w-full h-full"
               >
                 <div
-                  className="w-full h-full bg-white rounded-3xl border border-black/5 shadow-xl shadow-black/5 flex flex-col items-center justify-center p-8 text-center cursor-pointer group relative overflow-hidden"
+                  className="w-full h-full bg-white rounded-3xl border border-black/5 shadow-xl shadow-black/5 flex flex-col items-center justify-center pt-14 pb-8 px-4 sm:px-8 text-center cursor-pointer group relative overflow-hidden"
                   onClick={() => setShowAnswer(!showAnswer)}
                 >
                   <div className="absolute top-4 left-4 flex gap-2 flex-wrap justify-start max-w-[80%]">
@@ -305,35 +305,35 @@ export default function App() {
                   {/* Decorative background element */}
                   <div className="absolute -top-24 -right-24 w-48 h-48 bg-orange-50 rounded-full opacity-50 group-hover:scale-110 transition-transform duration-500" />
 
-                  <div className="relative z-10 w-full px-4">
+                  <div className="relative z-10 w-full px-2 sm:px-4">
                     {mode === 'JP_TO_CN' ? (
                       <>
-                        <h2 className="text-5xl sm:text-6xl font-bold mb-4 tracking-tight break-words">
+                        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4 tracking-tight break-words">
                           {currentItem.japanese}
                         </h2>
-                        <p className={`text-lg text-black/50 font-medium mb-8 min-h-[1.75rem] transition-all duration-300 ${!showReading && !readingRevealed && currentItem.reading !== currentItem.japanese ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>
+                        <p className={`text-base sm:text-lg text-black/50 font-medium mb-6 sm:mb-8 min-h-[1.75rem] transition-all duration-300 ${!showReading && !readingRevealed && currentItem.reading !== currentItem.japanese ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>
                           {currentItem.reading !== currentItem.japanese ? currentItem.reading : ''}
                         </p>
                       </>
                     ) : (
-                      <h2 className="text-3xl sm:text-4xl font-bold mb-12 tracking-tight break-words">
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 tracking-tight break-words">
                         {currentItem.chinese}
                       </h2>
                     )}
 
-                    <div className="h-24 flex items-center justify-center">
+                    <div className="h-20 sm:h-24 flex items-center justify-center">
                       {showAnswer ? (
                         <motion.div
                           initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
-                          className="text-2xl font-medium text-orange-600 w-full"
+                          className="text-xl sm:text-2xl font-medium text-orange-600 w-full"
                         >
                           {mode === 'JP_TO_CN' ? (
                             <div className="break-words">{currentItem.chinese}</div>
                           ) : (
                             <div className="flex flex-col items-center">
-                              <span className="text-4xl font-bold break-words">{currentItem.japanese}</span>
-                              <span className={`text-base text-black/50 mt-2 transition-all duration-300 ${!showReading && !readingRevealed ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>{currentItem.reading}</span>
+                              <span className="text-3xl sm:text-4xl font-bold break-words">{currentItem.japanese}</span>
+                              <span className={`text-sm sm:text-base text-black/50 mt-2 transition-all duration-300 ${!showReading && !readingRevealed ? 'opacity-0 blur-sm' : 'opacity-100 blur-0'}`}>{currentItem.reading}</span>
                             </div>
                           )}
                         </motion.div>
